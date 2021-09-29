@@ -2,7 +2,7 @@
 Terraform module to relay AWS SNS messages to a Teams webhook
 
 ## Change Log
-- 1.0
+- 1.0.0
   - Initial release
 
 ## Variables
@@ -15,3 +15,23 @@ Terraform module to relay AWS SNS messages to a Teams webhook
 ## Outputs
 
 - `sns-teams-relay-lambda-arn` --- the Arn of the Lambda function deployed by the module
+
+## Example Use
+
+```
+resource "aws_sns_topic" "example" {
+  name = "example-topic"
+}
+
+module "sns_teams_relay" {
+  source = "github.com/CU-CommunityApps/tf-module-sns-teams-relay.git?ref=v1.0.0"
+  
+  tags               = {
+    "Environment" = "development"
+  }
+  namespace          = "example"
+  teams_webhook_url  = "https://cornellprod.webhook.office.com/webhookb2/abc123"
+  sns_topic_arn_list = [ aws_sns_topic.example.arn ]
+}
+
+```
