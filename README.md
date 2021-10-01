@@ -1,6 +1,8 @@
 # tf-module-sns-teams-relay
 Terraform module to relay AWS SNS messages to a Teams webhook
 
+A CloudFormation template of these resources is available at https://github.com/CU-CommunityApps/cu-aws-cloudformation/tree/main/sns-teams-relay
+
 ## Change Log
 - 1.0.0
   - Initial release
