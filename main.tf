@@ -51,17 +51,17 @@ resource "aws_cloudwatch_log_group" "lambda" {
 }
 
 resource "aws_sns_topic_subscription" "sns_message_source" {
-  for_each  = toset(var.sns_topic_arn_list)
-  topic_arn = each.key
+  count     = length(var.sns_topic_arn_list)
+  topic_arn = var.sns_topic_arn_list[count.index]
   protocol  = "lambda"
   endpoint  = aws_lambda_function.lambda.arn
 }
 
 resource "aws_lambda_permission" "sns" {
-  for_each      = toset(var.sns_topic_arn_list)
-  statement_id  = "allow-${split(":", each.key)[5]}"
+  count         = length(var.sns_topic_arn_list)
+  statement_id  = "allow-${split(":", var.sns_topic_arn_list[count.index])[5]}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda.function_name
   principal     = "sns.amazonaws.com"
-  source_arn    = each.key
+  source_arn    = var.sns_topic_arn_list[count.index]
 }

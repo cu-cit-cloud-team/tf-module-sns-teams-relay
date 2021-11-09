@@ -4,6 +4,8 @@ Terraform module to relay AWS SNS messages to a Teams webhook
 A CloudFormation template of these resources is available at https://github.com/CU-CommunityApps/cu-aws-cloudformation/tree/main/sns-teams-relay
 
 ## Change Log
+- 1.1.0
+  - refactor `aws_sns_topic_subscription`, `aws_lambda_permission` to avoid this TF error: 'The "for_each" value depends on resource attributes that cannot be determined until apply, so Terraform cannot predict how many instances will be created. To work around this, use the -target argument to first apply only the resources that the for_each depends on.'
 - 1.0.0
   - Initial release
 
