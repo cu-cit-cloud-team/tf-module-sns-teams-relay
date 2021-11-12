@@ -40,7 +40,8 @@ resource "aws_lambda_function" "lambda" {
   
   environment {
     variables = {
-      WEBHOOK_URL = var.teams_webhook_url
+      WEBHOOK_URL_NORMAL = var.teams_webhook_url_normal
+      WEBHOOK_URL_ALERT  = var.teams_webhook_url_alert
     }
   }  
 }
