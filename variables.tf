@@ -12,8 +12,13 @@ variable "namespace" {
 	default     = "default"
 }
 
-variable "teams_webhook_url" {
-	description = "URL of webhook exposed for target Teams channel."
+variable "teams_webhook_url_normal" {
+	description = "URL of webhook exposed for target Teams channel for regular notifications."
+	type        = string
+}
+
+variable "teams_webhook_url_alert" {
+	description = "URL of webhook exposed for target Teams channel for alert/critical notifications."
 	type        = string
 }
 
