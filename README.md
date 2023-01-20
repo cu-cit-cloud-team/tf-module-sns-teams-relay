@@ -5,6 +5,9 @@ A CloudFormation template of these resources is available at https://github.com/
 
 ## Change Log
 
+### v2.1.1
+- revert to using just `sns_topic_arn_list` to create subscriptions
+
 ### v2.1.0
 - add support for handling CloudWatch alarms messages
 - add default value of empty list for `sns_topic_arn_list` parameter
@@ -30,8 +33,8 @@ A CloudFormation template of these resources is available at https://github.com/
 - `teams_webhook_url_normal` (required) --- URL of webhook exposed for target Teams channel for regular notifications
 - `teams_webhook_url_alert` (required) --- URL of webhook for the target Teams channel
 - `sns_topic_arn_list` (optional) --- A list of SNS Arns which should have messages relayed to Teams
-- `alarm_sns_topic_arn_list_normal` --- All alarm notifications coming on these SNS topics always will be sent to the normal webhook
-- `alarm_sns_topic_arn_list_alert` --- All alarm notifications coming on these SNS topics always will be sent to the alert webhook
+- `alarm_sns_topic_arn_list_normal` --- All alarm notifications coming on these SNS topics always will be sent to the normal webhook. All these topics must also be included in `sns_topic_arn_list`.
+- `alarm_sns_topic_arn_list_alert` --- All alarm notifications coming on these SNS topics always will be sent to the alert webhook. All these topics must also be included in `sns_topic_arn_list`.
 - `strftime_format` --- Python strftime format string to use to convert to readable timestamps in output messages
 
 ## Outputs

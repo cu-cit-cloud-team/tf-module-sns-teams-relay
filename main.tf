@@ -54,26 +54,18 @@ resource "aws_cloudwatch_log_group" "lambda" {
   retention_in_days = 14
 }
 
-locals {
-  all_sns_topics = distinct(concat(
-    var.sns_topic_arn_list,
-    var.alarm_sns_topic_arn_list_normal,
-    var.alarm_sns_topic_arn_list_alert
-  ))
-}
-
 resource "aws_sns_topic_subscription" "sns_message_source" {
-  count     = length(local.all_sns_topics)
-  topic_arn = local.all_sns_topics[count.index]
+  count     = length(var.sns_topic_arn_list)
+  topic_arn = var.sns_topic_arn_list[count.index]
   protocol  = "lambda"
   endpoint  = aws_lambda_function.lambda.arn
 }
 
 resource "aws_lambda_permission" "sns" {
-  count         = length(local.all_sns_topics)
-  statement_id  = "allow-${split(":", local.all_sns_topics[count.index])[5]}"
+  count         = length(var.sns_topic_arn_list)
+  statement_id  = "allow-${split(":", var.sns_topic_arn_list[count.index])[5]}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda.function_name
   principal     = "sns.amazonaws.com"
-  source_arn    = local.all_sns_topics[count.index]
+  source_arn    = var.sns_topic_arn_list[count.index]
 }
