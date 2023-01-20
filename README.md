@@ -5,6 +5,13 @@ A CloudFormation template of these resources is available at https://github.com/
 
 ## Change Log
 
+### v2.1.0
+- add support for handling CloudWatch alarms messages
+- add default value of empty list for `sns_topic_arn_list` parameter
+- add `alarm_sns_topic_arn_list_normal` parameter
+- add `alarm_sns_topic_arn_list_alert` parameter
+- add `strftime_format` parameter
+
 ### v2.0.0
 - apply some Python style improvements
 - add support for two different webhook URLs; one handles regular notifications, one handles more critical notifications
@@ -22,7 +29,10 @@ A CloudFormation template of these resources is available at https://github.com/
 - `tags` (optional) --- Mapping of tags to apply to AWS resources created
 - `teams_webhook_url_normal` (required) --- URL of webhook exposed for target Teams channel for regular notifications
 - `teams_webhook_url_alert` (required) --- URL of webhook for the target Teams channel
-- `sns_topic_arn_list` --- A list of SNS Arns which should have messages relayed to Teams
+- `sns_topic_arn_list` (optional) --- A list of SNS Arns which should have messages relayed to Teams
+- `alarm_sns_topic_arn_list_normal` --- All alarm notifications coming on these SNS topics always will be sent to the normal webhook
+- `alarm_sns_topic_arn_list_alert` --- All alarm notifications coming on these SNS topics always will be sent to the alert webhook
+- `strftime_format` --- Python strftime format string to use to convert to readable timestamps in output messages
 
 ## Outputs
 
@@ -36,7 +46,7 @@ resource "aws_sns_topic" "example" {
 }
 
 module "sns_teams_relay" {
-  source = "github.com/CU-CommunityApps/tf-module-sns-teams-relay.git?ref=v2.0.0"
+  source = "github.com/CU-CommunityApps/tf-module-sns-teams-relay.git?ref=v2.1.0"
   
   tags                      = {
     "Environment" = "development"
