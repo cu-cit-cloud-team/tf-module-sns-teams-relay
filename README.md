@@ -5,6 +5,9 @@ A CloudFormation template of these resources is available at https://github.com/
 
 ## Change Log
 
+### v3.0.0
+- add `terraform/required_providers` block for `aws` provider.
+
 ### v2.1.1
 - revert to using just `sns_topic_arn_list` to create subscriptions
 
