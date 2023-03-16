@@ -5,6 +5,9 @@ A CloudFormation template of these resources is available at https://github.com/
 
 ## Change Log
 
+### v3.1.0
+- minor change to generic SNS message display format to allow markdown-formatted message payloads to display better in Teams
+
 ### v3.0.0
 - add `terraform/required_providers` block for `aws` provider.
 
