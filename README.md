@@ -5,6 +5,11 @@ A CloudFormation template of these resources is available at https://github.com/
 
 ## Change Log
 
+### v3.2.0
+- add `generic_sns_topic_arn_list_normal` parameter
+- add `generic_sns_topic_arn_list_alert` parameter
+- updated to Lambda code to support these new parameters
+
 ### v3.1.0
 - minor change to generic SNS message display format to allow markdown-formatted message payloads to display better in Teams
 

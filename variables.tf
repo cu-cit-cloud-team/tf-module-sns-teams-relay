@@ -45,3 +45,15 @@ variable "strftime_format" {
 	type        = string
 	default     = "%Y-%m-%d %H:%M UTC"
 }
+
+variable "generic_sns_topic_arn_list_normal" {
+	description = "All generic notifications coming on these SNS topics will be sent to the normal webhook."
+	type        = list(string)
+	default     = []
+}
+
+variable "generic_sns_topic_arn_list_alert" {
+	description = "All generic notifications coming on these SNS topics will be sent to the alert webhook."
+	type        = list(string)
+	default     = []
+}

@@ -45,6 +45,8 @@ resource "aws_lambda_function" "lambda" {
       ALARM_SNS_TOPICS_NORMAL = join(",", var.alarm_sns_topic_arn_list_normal)
       ALARM_SNS_TOPICS_ALERT = join(",", var.alarm_sns_topic_arn_list_alert)
       STRFTIME_FORMAT = var.strftime_format
+      GENERIC_SNS_TOPICS_NORMAL = join(",", var.generic_sns_topic_arn_list_normal)
+      GENERIC_SNS_TOPICS_ALERT = join(",", var.generic_sns_topic_arn_list_alert)
     }
   }  
 }
