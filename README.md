@@ -5,6 +5,9 @@ A CloudFormation template of these resources is available at https://github.com/
 
 ## Change Log
 
+### 2024-11-08
+- Moved repository from https://github.com/CU-CommunityApps/tf-module-sns-teams-relay to https://github.com/cu-cit-cloud-team/tf-module-sns-teams-relay as part of Cornell Github Organization restructuring.
+
 ### v3.2.0
 - add `generic_sns_topic_arn_list_normal` parameter
 - add `generic_sns_topic_arn_list_alert` parameter
